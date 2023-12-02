@@ -25,6 +25,5 @@ public class Main extends Application {
 
         GameController gameController = new GameController();
         gameController.start();
-
     }
 }

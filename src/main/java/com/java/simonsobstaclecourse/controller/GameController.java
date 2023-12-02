@@ -17,7 +17,6 @@ public class GameController {
         welcomeText.setText("Welcome to JavaFX Application!");
     }
 
-
     //Command line Interface controller implementation:
     ArrayList<Player> players;
     Board board;
@@ -31,15 +30,21 @@ public class GameController {
     }
 
     public void setupPlayers(){
+        players = new ArrayList<>(2);
+        players.add(new Player(1, "Abhishek"));
+        players.add(new Player(2, "Lakshya"));
 
     }
 
     public void start(){
         while (!board.isGameOver()){
-            gameView.displayBoard();
+
+            board.getSquares().get(3).setPlayer(1);
+            board.getSquares().get(6).setPlayer(2);
+
+            gameView.displayBoard(board.getSquares());
 
             String command = gameView.getCommand().toUpperCase().trim();
-
             switch (command){
                 case "QUIT":
                     board.setGameOver(true);
@@ -47,9 +52,10 @@ public class GameController {
                 case "ROLL":
                     board.rollDice();
                 default:
-                    System.out.println("You have entered ");
+                    System.out.println("You have entered incorrect Command!");
             }
         }
+        System.out.println("bye!!!");
     }
 
 }

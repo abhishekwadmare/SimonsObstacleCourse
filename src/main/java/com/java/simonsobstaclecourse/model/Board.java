@@ -3,20 +3,29 @@ package com.java.simonsobstaclecourse.model;
 import java.util.ArrayList;
 
 public class Board {
-    private ArrayList<Square> squares;
-    private ArrayList<Player> players;
+//    private ArrayList<Square> squares;
+    private Squares squares;
+    private ArrayList<Player> playerList;
     private Dice dice;
     private boolean gameOver;
 
-    public Board(ArrayList<Player> players){
+    public Board(ArrayList<Player> playerList){
         gameOver = false;
-        this.players = players;
+        this.playerList = playerList;
         dice = new Dice();
-        setupSquares();
+        squares = new Squares(25);
     }
 
     public void rollDice(){
-        //roll the dice
+        dice.roll();
+    }
+
+    public Squares getSquares() {
+        return squares;
+    }
+
+    public int getDice() {
+        return dice.getDiceValue();
     }
 
     public boolean isGameOver() {
@@ -27,25 +36,8 @@ public class Board {
         this.gameOver = gameOver;
     }
 
-    private void setupSquares(){
-
-    }
-
-    public void setPlayers(ArrayList<Player> players) {
-        this.players = players;
-    }
-
-    public void setSquares(ArrayList<Square> squares) {
-        this.squares = squares;
-    }
-
-    public ArrayList<Square> getSquares() {
-        return squares;
-    }
-
     public ArrayList<Player> getPlayers() {
-        return players;
+        return playerList;
     }
-
 
 }
