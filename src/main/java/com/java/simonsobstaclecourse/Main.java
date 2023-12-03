@@ -6,8 +6,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import com.java.simonsobstaclecourse.model.Board;
-
 import java.io.IOException;
 
 public class Main extends Application {

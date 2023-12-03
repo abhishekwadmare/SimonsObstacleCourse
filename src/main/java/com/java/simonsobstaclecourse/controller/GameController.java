@@ -1,12 +1,11 @@
 package com.java.simonsobstaclecourse.controller;
 
-import com.java.simonsobstaclecourse.model.Board;
-import com.java.simonsobstaclecourse.model.Player;
+import com.java.simonsobstaclecourse.model.board.Board;
+import com.java.simonsobstaclecourse.model.board.Dice;
+import com.java.simonsobstaclecourse.model.player.Players;
 import com.java.simonsobstaclecourse.view.GameView;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-
-import java.util.ArrayList;
 
 public class GameController {
     @FXML
@@ -18,39 +17,38 @@ public class GameController {
     }
 
     //Command line Interface controller implementation:
-    ArrayList<Player> players;
+    Players players;
+    Dice dice;
     Board board;
     GameView gameView;
 
     public GameController(){
-        setupPlayers();
-        board = new Board(players);
-        gameView = new GameView(board);
-
-    }
-
-    public void setupPlayers(){
-        players = new ArrayList<>(2);
-        players.add(new Player(1, "Abhishek"));
-        players.add(new Player(2, "Lakshya"));
-
+        gameView = new GameView();
+        dice = new Dice();
+        players = gameView.getPlayers();
+        board = new Board(dice, players);
     }
 
     public void start(){
         while (!board.isGameOver()){
-
-            board.getSquares().get(3).setPlayer(1);
-            board.getSquares().get(6).setPlayer(2);
-
+            gameView.displayCurrentPlayer(players);
             gameView.displayBoard(board.getSquares());
 
-            String command = gameView.getCommand().toUpperCase().trim();
+            String command = gameView.getCommand();
+
             switch (command){
                 case "QUIT":
                     board.setGameOver(true);
                     break;
                 case "ROLL":
-                    board.rollDice();
+                    dice.roll();
+                    gameView.displayDice(dice.getDiceValue());
+                    if(board.isValidMove())
+                        board.move(gameView.getMoveChoice());
+                    else
+                        gameView.displayInvalidMoveMessage();
+                    players.switchPlayer();
+                    break;
                 default:
                     System.out.println("You have entered incorrect Command!");
             }
