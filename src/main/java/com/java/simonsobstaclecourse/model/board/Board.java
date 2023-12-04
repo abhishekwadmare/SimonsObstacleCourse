@@ -36,7 +36,7 @@ public class Board {
         Square destinationSquare = squares.get(currentPlayerPosition + dice.getDiceValue());
         if(isValidMove()){
             currentSquare.removePlayer();
-            destinationSquare.setPlayer(players.getCurrentPlayerId());
+            destinationSquare.setPlayer(players.getCurrentPlayer());
             players.getCurrentPlayer().setPlayerPosition(destinationSquare.squareId);
         }
     }
@@ -48,7 +48,7 @@ public class Board {
 
         if(currentSquare.obstacle == null) {
             //check if future square is occupied
-            if(destinationSquare.playerId != 0){
+            if(destinationSquare.getPlayer() != null){
                 return false;
             }
         }

@@ -52,7 +52,7 @@ public class GameView {
 
     public boolean getMoveChoice(){
 
-        System.out.print("Do you want to move?");
+        System.out.print("Do you want to move?(Y|N) : ");
         Scanner scanner = new Scanner(System.in);
         String choice = scanner.next().toUpperCase().trim();
         return choice.equals("Y") || choice.equals("YES");
