@@ -10,7 +10,6 @@ import javafx.scene.control.Label;
 public class GameController {
     @FXML
     private Label welcomeText;
-
     @FXML
     protected void onHelloButtonClick() {
         welcomeText.setText("Welcome to JavaFX Application!");
@@ -43,10 +42,15 @@ public class GameController {
                 case "ROLL":
                     dice.roll();
                     gameView.displayDice(dice.getDiceValue());
-                    if(board.isValidMove())
+                    if(board.isValidMove()){
                         board.move(gameView.getMoveChoice());
-                    else
+                        if(board.isGameWon()){
+                            gameView.displayWinMessage(players.getCurrentPlayer());
+                            return;
+                        }
+                    } else {
                         gameView.displayInvalidMoveMessage();
+                    }
                     players.switchPlayer();
                     break;
                 default:

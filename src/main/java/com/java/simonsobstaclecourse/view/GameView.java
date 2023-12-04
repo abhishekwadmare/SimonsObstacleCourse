@@ -2,7 +2,6 @@ package com.java.simonsobstaclecourse.view;
 
 import com.java.simonsobstaclecourse.model.player.Player;
 import com.java.simonsobstaclecourse.model.player.Players;
-import com.java.simonsobstaclecourse.model.board.Square;
 import com.java.simonsobstaclecourse.model.board.Squares;
 
 import java.util.Scanner;
@@ -10,9 +9,13 @@ import java.util.Scanner;
 public class GameView {
 
     public void displayBoard(Squares squares){
-
-        for (Square square: squares) {
-            System.out.print(square + " ");
+        for(int i = 0; i < squares.size(); i++){
+            if(i == 0)
+                System.out.print("[Start] ");
+            else if (i == squares.size()-1)
+                System.out.println(" [Finish]");
+            else
+                System.out.print(squares.get(i) + " ");
         }
     }
     public void displayCurrentPlayer(Players players){
@@ -20,6 +23,10 @@ public class GameView {
     }
     public void displayDice(int diceValue){
         System.out.println("The dice value is: " + diceValue);
+    }
+
+    public void displayWinMessage(Player player){
+        System.out.print(player + "won the game");
     }
 
     public void displayInvalidMoveMessage(){
@@ -51,7 +58,6 @@ public class GameView {
     }
 
     public boolean getMoveChoice(){
-
         System.out.print("Do you want to move?(Y|N) : ");
         Scanner scanner = new Scanner(System.in);
         String choice = scanner.next().toUpperCase().trim();

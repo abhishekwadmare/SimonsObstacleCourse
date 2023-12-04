@@ -7,6 +7,7 @@ public class Square {
     int squareId;
     Player player;
     Obstacle obstacle;
+
     public Square(int squareId) {
         this.squareId = squareId;
     }
@@ -17,9 +18,7 @@ public class Square {
 
     @Override
     public String toString() {
-        if(squareId == 0)
-            return "[Start]";
-        else if(player != null && obstacle != null)
+        if(player != null && obstacle != null)
             return "[P" + player.getPlayerId() + " " + obstacle + "]";
         else if(obstacle != null)
             return "[ " + obstacle + "]";
