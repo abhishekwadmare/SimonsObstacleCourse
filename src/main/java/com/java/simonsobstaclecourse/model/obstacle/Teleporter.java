@@ -8,20 +8,20 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Teleporter implements Obstacle{
     final int ObstacleId = 4;
     @Override
-    public void applyEffect(Player currentPlayer, Squares squares) {
-        squares.get(currentPlayer.getPlayerPosition()).removePlayer();
-        int destination = ThreadLocalRandom.current().nextInt(0, squares.size());
-        if(destination != 0){
-            squares.get(destination).setPlayer(currentPlayer);
+    public void applyEffect(Player player, Squares squares) {
+        squares.get(player.getPlayerPosition()).removePlayer();
+        int destination = ThreadLocalRandom.current().nextInt(player.getPlayerPosition(), squares.size());
+
+        if(squares.get(destination).getPlayer() == null){
+            squares.get(destination).setPlayer(player);
+            player.setPlayerPosition(destination);
         }
-        currentPlayer.setPlayerPosition(destination);
     }
 
     @Override
     public String toString() {
         return "TP";
     }
-
     @Override
     public int getObstacleId() {
         return ObstacleId;

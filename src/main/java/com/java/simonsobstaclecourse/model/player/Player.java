@@ -5,9 +5,8 @@ public class Player {
     int playerId;
     int playerPosition;
     int requiredMove = 0;
+
     boolean skipTurn = false;
-
-
 
     public Player(int playerId, String name){
         this.playerId = playerId;
@@ -46,4 +45,5 @@ public class Player {
     public String toString() {
         return "Player " +  playerId + " : " + name;
     }
+
 }

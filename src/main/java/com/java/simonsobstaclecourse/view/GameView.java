@@ -26,7 +26,7 @@ public class GameView {
     }
 
     public void displayWinMessage(Player player){
-        System.out.print(player + "won the game");
+        System.out.print(player + " won the game");
     }
 
     public void displayInvalidMoveMessage(){
@@ -57,6 +57,11 @@ public class GameView {
         return players;
     }
 
+    public int getToTransportPlayer(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("which player do you want teleport, Enter Player number?");
+        return scanner.nextInt();
+    }
     public boolean getMoveChoice(){
         System.out.print("Do you want to move?(Y|N) : ");
         Scanner scanner = new Scanner(System.in);

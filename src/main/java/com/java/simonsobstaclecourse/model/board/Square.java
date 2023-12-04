@@ -51,6 +51,13 @@ public class Square {
         return player;
     }
 
+    public int getObstacleId() {
+        if(obstacle == null)
+            return 0;
+        return obstacle.getObstacleId();
+
+    }
+
     public void removePlayer(){
         this.player = null;
     }

@@ -2,6 +2,7 @@ package com.java.simonsobstaclecourse.controller;
 
 import com.java.simonsobstaclecourse.model.board.Board;
 import com.java.simonsobstaclecourse.model.board.Dice;
+import com.java.simonsobstaclecourse.model.player.Player;
 import com.java.simonsobstaclecourse.model.player.Players;
 import com.java.simonsobstaclecourse.view.GameView;
 import javafx.fxml.FXML;
@@ -42,8 +43,14 @@ public class GameController {
                 case "ROLL":
                     dice.roll();
                     gameView.displayDice(dice.getDiceValue());
-                    if(board.isValidMove()){
-                        board.move(gameView.getMoveChoice());
+                    if(board.isValidMove() && gameView.getMoveChoice()){
+                        if(board.getCurrentPlayerObstacleId(dice.getDiceValue()) == 4){
+                            Player player = players.get(gameView.getToTransportPlayer()-1);
+                            board.handelObstacle(player);
+                        } else {
+                            board.handelObstacle(players.getCurrentPlayer());
+                        }
+                        board.move();
                         if(board.isGameWon()){
                             gameView.displayWinMessage(players.getCurrentPlayer());
                             return;

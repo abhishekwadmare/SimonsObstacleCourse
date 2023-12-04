@@ -24,4 +24,5 @@ public class Players extends ArrayList<Player> {
     public void switchPlayer(){
         currentPlayerId = (currentPlayerId % playerCount) + 1;
     }
+
 }
