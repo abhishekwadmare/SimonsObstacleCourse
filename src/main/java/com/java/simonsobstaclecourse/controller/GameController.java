@@ -10,17 +10,17 @@ import javafx.scene.control.Label;
 
 public class GameController {
     @FXML
-    private Label welcomeText;
+	public Label welcomeText;
     @FXML
-    protected void onHelloButtonClick() {
+	public void onHelloButtonClick() {
         welcomeText.setText("Welcome to JavaFX Application!");
     }
 
     //Command line Interface controller implementation:
     Players players;
     Dice dice;
-    Board board;
-    GameView gameView;
+    public Board board;
+    public GameView gameView;
 
     public GameController(){
         gameView = new GameView();

@@ -6,7 +6,7 @@ import com.java.simonsobstaclecourse.model.player.Player;
 public class Square {
     int squareId;
     Player player;
-    Obstacle obstacle;
+    public Obstacle obstacle;
 
     public Square(int squareId) {
         this.squareId = squareId;

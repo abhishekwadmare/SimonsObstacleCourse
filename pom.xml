@@ -24,7 +24,24 @@
       <artifactId>javafx-fxml</artifactId>
       <version>21-ea+24</version>
     </dependency>
-
+	<dependency>
+        <groupId>org.mockito</groupId>
+        <artifactId>mockito-core</artifactId>
+        <version>4.11.0</version> <!-- Use the latest version available -->
+        <scope>test</scope>
+    </dependency>
+     <dependency>
+        <groupId>org.testfx</groupId>
+        <artifactId>testfx-core</artifactId>
+        <version>4.0.17</version> <!-- Use the latest version available -->
+        <scope>test</scope>
+    </dependency>
+    <dependency>
+        <groupId>org.testfx</groupId>
+        <artifactId>testfx-junit</artifactId>
+        <version>4.0.17</version> <!-- Use the latest version available -->
+        <scope>test</scope>
+    </dependency>
 <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
