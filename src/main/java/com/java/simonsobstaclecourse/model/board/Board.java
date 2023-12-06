@@ -11,7 +11,6 @@ public class Board {
     public Board(Dice dice, Players players){
         this.dice = dice;
         this.players = players;
-
         gameOver = false;
         squares = new Squares(25);
     }
@@ -45,17 +44,21 @@ public class Board {
         players.getCurrentPlayer().setPlayerPosition(destinationSquare.squareId);
     }
 
-    public void handelObstacle(Player player){
+    public void handelObstacle(){
         int currentPlayerPosition = players.getCurrentPlayer().getPlayerPosition();
-        Square currentSquare = squares.get(currentPlayerPosition);
         Square destinationSquare = squares.get(currentPlayerPosition + dice.getDiceValue());
-        //if valid move reset the required moves for the current player
-        if(currentSquare.obstacle != null && dice.getDiceValue() >= players.getCurrentPlayer().getRequiredMove()){
-            players.getCurrentPlayer().setRequiredMove(0);
+        switch (destinationSquare.getObstacleId()){
+            case 0:
+                move();
+                break;
+            case 1:
+                destinationSquare.obstacle.applyEffect(players, squares);
+                break;
+            case 2,3,4:
+                destinationSquare.obstacle.applyEffect(players,squares);
+                move();
+                break;
         }
-
-        if(destinationSquare.obstacle !=null)
-            destinationSquare.obstacle.applyEffect(player, squares);
     }
 
 
@@ -69,18 +72,23 @@ public class Board {
 
         Square destinationSquare = squares.get(currentPlayerPosition + dice.getDiceValue());
 
-        //check if future square is occupied
+        //check if destination square is occupied
         if(destinationSquare.getPlayer() != null){
             return false;
         }
+
         if(currentSquare.obstacle != null) {
             //player is in fire pit
             if(players.getCurrentPlayer().isSkipTurn()){
                 players.getCurrentPlayer().setSkipTurn(false);
                 return false;
-            } else if(dice.getDiceValue() < players.getCurrentPlayer().getRequiredMove()){
-                //player is in spike pit
+            }
+            //player is in spike pit
+            if(dice.getDiceValue() < players.getCurrentPlayer().getRequiredMove()){
                 return false;
+            } else {
+                //if valid move reset the required moves for the current player
+                players.getCurrentPlayer().setRequiredMove(0);
             }
         }
         return true;

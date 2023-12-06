@@ -6,65 +6,121 @@ import com.java.simonsobstaclecourse.model.player.Player;
 import com.java.simonsobstaclecourse.model.player.Players;
 import com.java.simonsobstaclecourse.view.GameView;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 
 public class GameController {
     @FXML
-    private Label welcomeText;
+    private Label currentPlayer;
     @FXML
-    protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
+    private Label message;
+
+    @FXML
+    private GridPane gameBoard;
+
+    @FXML
+    private TextField p1Name;
+
+    @FXML
+    private Button skip;
+
+    @FXML
+    private TextField p2Name;
+
+    @FXML
+    private Button inputSubmit;
+
+    @FXML
+    private Button move;
+
+    @FXML
+    private Button roll;
+
+    @FXML
+    private Label rollValue;
+
+    @FXML
+    void move(MouseEvent event) {
+        board.handelObstacle();
+        if(board.isGameWon()){
+            gameView.displayWinMessage(players.getCurrentPlayer(), message);
+            gameView.updateBoard(gameBoard,board.getSquares());
+            roll.setVisible(false);
+            move.setVisible(false);
+            skip.setVisible(false);
+            return;
+        }
+        players.switchPlayer(currentPlayer);
+        roll.setVisible(true);
+        rollValue.setVisible(false);
+        move.setVisible(false);
+        skip.setVisible(false);
+        gameView.updateBoard(gameBoard,board.getSquares());
+        message.setVisible(false);
+    }
+
+    @FXML
+    void skip(MouseEvent event) {
+        players.switchPlayer(currentPlayer);
+        roll.setVisible(true);
+        rollValue.setVisible(false);
+        move.setVisible(false);
+        skip.setVisible(false);
+        message.setVisible(false);
+    }
+
+    @FXML
+    void roll(MouseEvent event) {
+        dice.roll();
+        gameView.displayDice(dice.getDiceValue(), rollValue);
+        rollValue.setVisible(true);
+        if(!board.isValidMove()){
+            gameView.displayInvalidMoveMessage(message);
+            move.setVisible(false);
+            skip.setVisible(true);
+        } else {
+            move.setVisible(true);
+            skip.setVisible(true);
+        }
+
+        rollValue.setVisible(true);
+        roll.setVisible(false);
+    }
+
+    @FXML
+    void submitInputValues(MouseEvent event) {
+        p1Name.setVisible(false);
+        p2Name.setVisible(false);
+        inputSubmit.setVisible(false);
+        players.add(new Player(1, p1Name.getText()));
+        players.add(new Player(2, p2Name.getText()));
+        board = new Board(dice, players);
+        gameView.updateBoard(gameBoard,board.getSquares());
+        currentPlayer.setText(players.getCurrentPlayer().toString());
+        currentPlayer.setVisible(true);
+        roll.setVisible(true);
+        gameBoard.setVisible(true);
     }
 
     //Command line Interface controller implementation:
     Players players;
     Dice dice;
     Board board;
+    boolean isMove;
     GameView gameView;
 
-    public GameController(){
+    @FXML
+    public void initialize(){
         gameView = new GameView();
         dice = new Dice();
-        players = gameView.getPlayers();
-        board = new Board(dice, players);
-    }
-
-    public void start(){
-        while (!board.isGameOver()){
-            gameView.displayCurrentPlayer(players);
-            gameView.displayBoard(board.getSquares());
-
-            String command = gameView.getCommand();
-
-            switch (command){
-                case "QUIT":
-                    board.setGameOver(true);
-                    break;
-                case "ROLL":
-                    dice.roll();
-                    gameView.displayDice(dice.getDiceValue());
-                    if(board.isValidMove() && gameView.getMoveChoice()){
-                        if(board.getCurrentPlayerObstacleId(dice.getDiceValue()) == 4){
-                            Player player = players.get(gameView.getToTransportPlayer()-1);
-                            board.handelObstacle(player);
-                        } else {
-                            board.handelObstacle(players.getCurrentPlayer());
-                        }
-                        board.move();
-                        if(board.isGameWon()){
-                            gameView.displayWinMessage(players.getCurrentPlayer());
-                            return;
-                        }
-                    } else {
-                        gameView.displayInvalidMoveMessage();
-                    }
-                    players.switchPlayer();
-                    break;
-                default:
-                    System.out.println("You have entered incorrect Command!");
-            }
-        }
-        System.out.println("bye!!!");
+        players = new Players(2);
+        roll.setVisible(false);
+        move.setVisible(false);
+        skip.setVisible(false);
+        gameBoard.setVisible(false);
     }
 
 }

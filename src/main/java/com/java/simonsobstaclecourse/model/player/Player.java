@@ -2,6 +2,7 @@ package com.java.simonsobstaclecourse.model.player;
 
 public class Player {
     String name;
+    String symbol;
     int playerId;
     int playerPosition;
     int requiredMove = 0;
