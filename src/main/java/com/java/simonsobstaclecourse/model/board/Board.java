@@ -6,6 +6,8 @@ public class Board {
     private Squares squares;
     private Players players;
     private Dice dice;
+
+    private ScoreBoard scoreBoard;
     private boolean gameOver;
 
     public Board(Dice dice, Players players){
@@ -13,10 +15,15 @@ public class Board {
         this.players = players;
         gameOver = false;
         squares = new Squares(25);
+        scoreBoard = new ScoreBoard();
     }
 
     public Squares getSquares() {
         return squares;
+    }
+
+    public ScoreBoard getScoreBoard() {
+        return scoreBoard;
     }
 
     public boolean isGameOver() {

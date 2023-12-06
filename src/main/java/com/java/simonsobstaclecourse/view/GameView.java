@@ -3,10 +3,14 @@ package com.java.simonsobstaclecourse.view;
 import com.java.simonsobstaclecourse.model.player.Player;
 import com.java.simonsobstaclecourse.model.player.Players;
 import com.java.simonsobstaclecourse.model.board.Squares;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.layout.GridPane;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class GameView {
@@ -17,6 +21,7 @@ public class GameView {
 
         // Set up the grid
         int gridSize = (int)Math.sqrt(squares.size());
+        gameBoard.setAlignment(Pos.CENTER);
         int index = 0;
         int top = 0,
                 bottom = gridSize - 1,
@@ -135,6 +140,22 @@ public class GameView {
             left++;
         }
 
+    }
+
+    public void updateTopPlayersList(ListView<String> topScore, List<Player> top10Players) {
+        ObservableList<String> playerNames = FXCollections.observableArrayList();
+//        topScore.setAlignment(Pos.CENTER);
+
+        topScore.setPrefWidth(100);
+        topScore.setPrefHeight(400);
+
+        // Convert the list to strings and add them to the ObservableList
+        for (Player player : top10Players) {
+            playerNames.add(player.getName() + " : " + player.getScore());
+        }
+
+        // Set the ObservableList to the ListView
+        topScore.setItems(playerNames);
     }
     public void displayCurrentPlayer(Players players){
         System.out.println(players.get(players.getCurrentPlayerId()-1));

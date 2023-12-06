@@ -27,5 +27,4 @@ public class Players extends ArrayList<Player> {
         currentPlayerId = (currentPlayerId % playerCount) + 1;
         currentPlayer.setText(getCurrentPlayer().toString());
     }
-
 }

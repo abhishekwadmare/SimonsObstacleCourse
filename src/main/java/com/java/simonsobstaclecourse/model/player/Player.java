@@ -2,17 +2,26 @@ package com.java.simonsobstaclecourse.model.player;
 
 public class Player {
     String name;
-    String symbol;
+
+    int score;
     int playerId;
     int playerPosition;
-    int requiredMove = 0;
+    int requiredMove;
 
     boolean skipTurn = false;
 
     public Player(int playerId, String name){
         this.playerId = playerId;
         this.name = name;
-        this.playerPosition = 0;
+    }
+
+    public Player(String name, int score){
+        this.name = name;
+        this.score = score;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public int getPlayerPosition() {
@@ -28,6 +37,14 @@ public class Player {
 
     public void setRequiredMove(int requiredMove) {
         this.requiredMove = requiredMove;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void increaseScore(int score) {
+        this.score += score;
     }
 
     public boolean isSkipTurn() {
