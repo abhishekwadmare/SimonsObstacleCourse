@@ -26,7 +26,6 @@ public class Players extends ArrayList<Player> {
     public void switchPlayer(Label currentPlayer){
         currentPlayerId = (currentPlayerId % playerCount) + 1;
         currentPlayer.setText(getCurrentPlayer().toString());
-//        currentPlayerId = currentPlayerId == 1 ? 2:1;
     }
 
 }

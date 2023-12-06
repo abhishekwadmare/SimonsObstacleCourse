@@ -19,13 +19,13 @@ public class Square {
     @Override
     public String toString() {
         if(player != null && obstacle != null)
-            return "[P" + player.getPlayerId() + " " + obstacle + "]";
+            return "["+ obstacle.toString().charAt(0) +"_P" + player.getPlayerId() + "_" + obstacle.toString().charAt(1) + "]";
         else if(obstacle != null)
-            return "[ " + obstacle + "]";
+            return "["+ obstacle.toString().charAt(0)+ "__" + obstacle.toString().charAt(1) + "]";
         else if(player != null)
             return "[P" + player.getPlayerId() + "]";
         else
-            return "[  ]";
+            return "    ";
     }
 
     public void setObstacle(int ObstacleId) {

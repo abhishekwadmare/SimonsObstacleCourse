@@ -15,6 +15,7 @@ import javafx.scene.layout.GridPane;
 public class GameController {
     @FXML
     private Label currentPlayer;
+
     @FXML
     private Label message;
 

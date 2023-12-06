@@ -33,13 +33,13 @@ public class GameView {
             for (int i = left; i <= right; i++){
                 String colour;
                 if(index%2 == 0){
-                    colour = "#4f7e9a";
+                    colour = "#27c9b8";
                 } else {
                     colour = "#3f7b50";
                 }
                 Label label;
                 if(index == squares.size()-1){
-                    label = new Label("Finish");
+                    label = new Label("Finish\n"+squares.get(index++).toString());
                     label.setStyle("-fx-border-color: brown brown brown transparent; -fx-border-width: 6px; -fx-background-color: #36dc1c;" + whiteText);
                     index++;
                 } else if(index == 0){
@@ -54,7 +54,7 @@ public class GameView {
                     label.setStyle("-fx-border-color: brown transparent brown transparent ; -fx-border-width: 6px; -fx-background-color: " + colour +";"  + whiteText);
                 }
 
-                label.setMinSize(100, 80);
+                label.setMinSize(100, 75);
                 label.setAlignment(Pos.CENTER);
                 gameBoard.add(label, i, top);
             }
@@ -67,7 +67,7 @@ public class GameView {
             for (int i = top; i <= bottom; i++){
                 String colour;
                 if(index%2 == 0){
-                    colour = "#4f7e9a";
+                    colour = "#27c9b8";
                 } else {
                     colour = "#3f7b50";
                 }
@@ -77,9 +77,8 @@ public class GameView {
                 } else {
                     label.setStyle("-fx-border-color: transparent brown transparent brown; -fx-border-width: 6px; -fx-background-color: " + colour +";"  + whiteText);
                 }
-                label.setMinSize(100, 80);
+                label.setMinSize(100, 75);
                 label.setAlignment(Pos.CENTER);
-
                 gameBoard.add(label, right, i);
             }
 
@@ -92,7 +91,7 @@ public class GameView {
             for (int i = right; i >= left; i--){
                 String colour;
                 if(index%2 == 0){
-                    colour = "#4f7e9a";
+                    colour = "#27c9b8";
                 } else {
                     colour = "#3f7b50";
                 }
@@ -103,8 +102,7 @@ public class GameView {
                     label.setStyle("-fx-border-color: brown transparent brown transparent; -fx-border-width: 6px; -fx-background-color: " + colour +";"  + whiteText);
                 }
 
-
-                label.setMinSize(100, 80);
+                label.setMinSize(100, 75);
                 label.setAlignment(Pos.CENTER);
                 gameBoard.add(label, i, bottom);
             }
@@ -118,7 +116,7 @@ public class GameView {
             for (int i = bottom; i >= top; i--){
                 String colour;
                 if(index%2 == 0){
-                    colour = "#4f7e9a";
+                    colour = "#27c9b8";
                 } else {
                     colour = "#3f7b50";
                 }
@@ -129,7 +127,7 @@ public class GameView {
                     label.setStyle("-fx-border-color: transparent brown transparent brown; -fx-border-width: 6px; -fx-background-color: " + colour +";"  + whiteText);
                 }
 
-                label.setMinSize(100, 80);
+                label.setMinSize(100, 75);
                 label.setAlignment(Pos.CENTER);
                 gameBoard.add(label, left, i);
             }
@@ -142,7 +140,7 @@ public class GameView {
         System.out.println(players.get(players.getCurrentPlayerId()-1));
     }
     public void displayDice(int diceValue, Label rollValue){
-        rollValue.setText("ROll: " + diceValue);
+        rollValue.setText("Move " + diceValue +" steps");
         System.out.println("The dice value is: " + diceValue);
     }
 
