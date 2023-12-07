@@ -13,9 +13,9 @@ public class Squares extends ArrayList<Square> {
      *
      * @param size The size of the collection, representing the number of squares on the game board.
      */
-    public Squares(int size){
+    public Squares(int size, int difficulty){
         super(size);
-        addSquares(size);
+        addSquares(size, difficulty);
     }
 
     /**
@@ -24,11 +24,27 @@ public class Squares extends ArrayList<Square> {
      *
      * @param size The size of the collection, representing the number of squares on the game board.
      */
-    public void addSquares(int size){
+    public void addSquares(int size, int difficulty){
         int obstacleId = 1;
+        int obstacleSpreader;
+
+        if(difficulty == 1){
+            //easy
+            obstacleSpreader = size/3;
+        } else if(difficulty == 2){
+            //normal
+            obstacleSpreader = (int)Math.sqrt(size);
+        } else if(difficulty == 3){
+            //difficult
+            obstacleSpreader = (int)Math.cbrt(size);
+        } else {
+            //normal
+            obstacleSpreader = (int)Math.sqrt(size);
+        }
+
+
         for (int i = 0; i < size; i++) {
-            // Check if the square index corresponds to a position for an obstacle
-            if(i % Math.sqrt(size) == 0 && i != 0 && i != size-1){
+            if(i % obstacleSpreader == 0 && i != 0 && i != size-1){
                 this.add(new Square(i, obstacleId));
                 // Cycle through obstacle types (1 to 4)
                 obstacleId = (obstacleId % 4) + 1;

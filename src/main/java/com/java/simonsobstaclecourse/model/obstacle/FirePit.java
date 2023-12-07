@@ -2,6 +2,7 @@ package com.java.simonsobstaclecourse.model.obstacle;
 
 import com.java.simonsobstaclecourse.model.board.Squares;
 import com.java.simonsobstaclecourse.model.player.Player;
+import com.java.simonsobstaclecourse.model.player.Players;
 
 /**
  * Represents a Fire Pit obstacle in the game.
@@ -20,8 +21,8 @@ public class FirePit implements Obstacle {
      * @param squares        The collection of squares on the game board.
      */
     @Override
-    public void applyEffect(Player currentPlayer, Squares squares) {
-        currentPlayer.setSkipTurn(true);
+    public void applyEffect(Players players, Squares squares) {
+        players.getCurrentPlayer().setSkipTurn(true);
     }
 
     /**

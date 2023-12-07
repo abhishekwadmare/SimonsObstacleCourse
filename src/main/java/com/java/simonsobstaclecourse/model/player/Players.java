@@ -1,5 +1,7 @@
 package com.java.simonsobstaclecourse.model.player;
 
+import javafx.scene.control.Label;
+
 import java.util.ArrayList;
 
 /**
@@ -46,7 +48,8 @@ public class Players extends ArrayList<Player> {
     /**
      * Switch the current player to the next player in the collection.
      */
-    public void switchPlayer(){
+    public void switchPlayer(Label currentPlayer){
         currentPlayerId = (currentPlayerId % playerCount) + 1;
+        currentPlayer.setText(getCurrentPlayer().toString());
     }
 }

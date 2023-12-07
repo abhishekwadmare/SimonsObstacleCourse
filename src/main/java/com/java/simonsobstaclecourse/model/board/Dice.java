@@ -13,16 +13,10 @@ public class Dice {
     private int diceValue;
 
     /**
-     * Simulating rolling the dice by generating a random value between 1 and 6 (inclusive).
-     * For testing purposes, the user is prompted to manually input the dice value.
+     * Simulating rolling the dice by generating a random value between 1 and 9 (inclusive).
      */
     public void roll(){
-  
-        // diceValue = ThreadLocalRandom.current().nextInt(1, 7);
-
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter dice value:");
-        diceValue = scanner.nextInt();
+        diceValue = ThreadLocalRandom.current().nextInt(1, 10);
     }
 
     /**
