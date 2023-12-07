@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" minHeight="700.0" prefWidth="900.0" spacing="20.0" style="-fx-background-color: #cdeae7;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.java.simonsobstaclecourse.controller.GameController">
+  <padding>
+    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+  </padding>
+   <Pane prefWidth="200.0">
+      <children>
+         <AnchorPane fx:id="startWindow" prefWidth="860.0">
+            <children>
+               <Label layoutX="347.0" layoutY="-4.0" prefHeight="35.0" prefWidth="166.0" text="Simon's Game" textAlignment="CENTER" textFill="#f200ff">
+                  <font>
+                     <Font name="System Bold" size="24.0" />
+                  </font>
+               </Label>
+               <MenuButton fx:id="boardSize" layoutX="219.0" layoutY="61.0" mnemonicParsing="false" text="Board Size">
+
+         </MenuButton>
+               <MenuButton fx:id="numberOfPlayers" layoutX="365.0" layoutY="48.0" mnemonicParsing="false" text="Number of Players">
+
+         </MenuButton>
+               <MenuButton fx:id="dificultyLevel" layoutX="554.0" layoutY="61.0" mnemonicParsing="false" text="Difficulty level">
+
+         </MenuButton>
+               <Button fx:id="start" layoutX="322.0" layoutY="98.0" mnemonicParsing="false" onMouseClicked="#startGame" prefHeight="40.0" prefWidth="215.0" text="Start">
+                  <font>
+                     <Font size="18.0" />
+                  </font>
+               </Button>
+            </children>
+         </AnchorPane>
+      </children>
+   </Pane>
+   <Label fx:id="currentPlayer" textAlignment="CENTER" textFill="#0078c3">
+      <font>
+         <Font size="18.0" />
+      </font>
+      <VBox.margin>
+         <Insets />
+      </VBox.margin>
+   </Label>
+   <Pane>
+      <children>
+         <AnchorPane fx:id="playerNamesbar">
+            <children>
+               <TextField fx:id="p1Name" layoutX="552.0" promptText="Player 1 name" />
+               <TextField fx:id="p2Name" layoutX="396.0" layoutY="-1.0" prefHeight="26.0" prefWidth="134.0" promptText="Player 2 name" />
+               <Button fx:id="inputSubmit" layoutX="726.0" mnemonicParsing="false" onMouseClicked="#submitInputValues" prefHeight="26.0" prefWidth="98.0" text="Submit" />
+               <TextField fx:id="p3Name" layoutX="218.0" promptText="Player 3 name" />
+               <TextField fx:id="p4Name" layoutX="34.0" promptText="Player 4 name" />
+            </children>
+         </AnchorPane>
+      </children>
+   </Pane>
+
+  <!-- Spiral Grid of 25 Squares -->
+  <GridPane fx:id="gameBoard" alignment="CENTER" hgap="5" vgap="5">
+      <padding>
+         <Insets left="10.0" right="10.0" />
+      </padding></GridPane>
+   <VBox alignment="CENTER">
+      <children>
+         <AnchorPane fx:id="controlPanel" prefWidth="860.0">
+            <children>
+               <Label fx:id="rollValue" layoutX="350.0" prefWidth="158.0" textFill="#2c296b">
+                  <font>
+                     <Font size="18.0" />
+                  </font>
+               </Label>
+               <Button fx:id="roll" layoutX="134.0" layoutY="-6.0" mnemonicParsing="false" onMouseClicked="#roll" prefHeight="32.0" prefWidth="127.0" text="Roll">
+                  <font>
+                     <Font size="18.0" />
+                  </font>
+               </Button>
+               <Button fx:id="move" layoutX="629.0" layoutY="-6.0" mnemonicParsing="false" onMouseClicked="#move" prefHeight="40.0" prefWidth="70.0" text="Move">
+                  <font>
+                     <Font size="18.0" />
+                  </font>
+               </Button>
+               <Button fx:id="skip" layoutX="766.0" layoutY="-6.0" mnemonicParsing="false" onMouseClicked="#skip" text="Skip">
+                  <font>
+                     <Font size="18.0" />
+                  </font>
+               </Button>
+            </children>
+         </AnchorPane>
+      </children>
+   </VBox>
+   <Label fx:id="message" textFill="#ff8104">
+      <font>
+         <Font size="18.0" />
+      </font>
+   </Label>
+   <VBox fx:id="highScore" alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0">
+      <children>
+         <Label text="Top 10 players" textAlignment="CENTER" textFill="#1fa410">
+            <font>
+               <Font name="System Bold" size="18.0" />
+            </font>
+         </Label>
+         <ListView fx:id="topScore" prefWidth="860.0" />
+      </children>
+   </VBox>
+
+</VBox>

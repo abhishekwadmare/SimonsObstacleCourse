@@ -1,5 +1,4 @@
 package com.java.simonsobstaclecourse.model.board;
-
 import com.java.simonsobstaclecourse.model.player.Player;
 import com.java.simonsobstaclecourse.model.player.Players;
 
@@ -13,12 +12,15 @@ public class Board {
 
     /** Collection of squares on the game board. */
     private Squares squares;
+    private int difficulty = 1;
 
     /** Player information and management. */
     private Players players;
 
     /** Dice for generating random values during the game. */
     private Dice dice;
+
+    private ScoreBoard scoreBoard;
 
     /** Flag indicating whether the game is over. */
     private boolean gameOver;
@@ -31,13 +33,14 @@ public class Board {
      * @param dice    The dice used in the game.
      * @param players The collection of players in the game.
      */
-    public Board(Dice dice, Players players){
+    public Board(Dice dice, Players players, int difficulty, int boardSize){
         this.dice = dice;
         this.players = players;
 
         // Initializing game state
         gameOver = false;
-        squares = new Squares(25); // Assuming the size of the board is 25 squares
+        squares = new Squares(boardSize, difficulty); // Assuming the size of the board is 25 squares
+        scoreBoard = new ScoreBoard();
     }
 
     // Getter methods
@@ -49,6 +52,10 @@ public class Board {
      */
     public Squares getSquares() {
         return squares;
+    }
+
+    public ScoreBoard getScoreBoard() {
+        return scoreBoard;
     }
 
     /**
@@ -89,6 +96,14 @@ public class Board {
     public void setGameOver(boolean gameOver) {
         this.gameOver = gameOver;
     }
+    public int getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(int difficulty) {
+        this.difficulty = difficulty;
+    }
+
 
     // Gameplay methods
 
@@ -105,25 +120,27 @@ public class Board {
         players.getCurrentPlayer().setPlayerPosition(destinationSquare.squareId);
     }
 
+
     /**
      * Handles obstacles on the game board.
      * Resets required moves and applies obstacle effects.
      *
-     * @param player The player encountering the obstacle.
      */
-    public void handelObstacle(Player player){
+    public void handelObstacle(){
         int currentPlayerPosition = players.getCurrentPlayer().getPlayerPosition();
-        Square currentSquare = squares.get(currentPlayerPosition);
         Square destinationSquare = squares.get(currentPlayerPosition + dice.getDiceValue());
-
-        // Resetting required moves for the current player if valid move
-        if(currentSquare.obstacle != null && dice.getDiceValue() >= players.getCurrentPlayer().getRequiredMove()){
-            players.getCurrentPlayer().setRequiredMove(0);
+        switch (destinationSquare.getObstacleId()){
+            case 0:
+                move();
+                break;
+            case 1:
+                destinationSquare.obstacle.applyEffect(players, squares);
+                break;
+            case 2,3,4:
+                destinationSquare.obstacle.applyEffect(players,squares);
+                move();
+                break;
         }
-
-        // Applying obstacle effects to the player
-        if(destinationSquare.obstacle != null)
-            destinationSquare.obstacle.applyEffect(player, squares);
     }
 
     /**
@@ -143,10 +160,11 @@ public class Board {
 
         Square destinationSquare = squares.get(currentPlayerPosition + dice.getDiceValue());
 
-        // Checking if the future square is occupied
+        //checking if destination square is occupied
         if(destinationSquare.getPlayer() != null){
             return false;
         }
+
 
         // Checking for obstacles and player conditions
         if(currentSquare.obstacle != null) {
@@ -154,9 +172,13 @@ public class Board {
             if(players.getCurrentPlayer().isSkipTurn()){
                 players.getCurrentPlayer().setSkipTurn(false);
                 return false;
-            } else if(dice.getDiceValue() < players.getCurrentPlayer().getRequiredMove()){
-                // Here, Player is in a spike pit
+            }
+           // Here, Player is in a spike pit
+            if(dice.getDiceValue() < players.getCurrentPlayer().getRequiredMove()){
                 return false;
+            } else {
+                //if the move is valid, reset the required moves for the current player
+                players.getCurrentPlayer().setRequiredMove(0);
             }
         }
 

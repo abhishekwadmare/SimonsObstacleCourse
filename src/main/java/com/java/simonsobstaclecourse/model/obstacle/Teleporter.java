@@ -2,6 +2,7 @@ package com.java.simonsobstaclecourse.model.obstacle;
 
 import com.java.simonsobstaclecourse.model.board.Squares;
 import com.java.simonsobstaclecourse.model.player.Player;
+import com.java.simonsobstaclecourse.model.player.Players;
 
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -22,14 +23,22 @@ public class Teleporter implements Obstacle {
      * @param squares The collection of squares on the game board.
      */
     @Override
-    public void applyEffect(Player player, Squares squares) {
-        squares.get(player.getPlayerPosition()).removePlayer();
+    public void applyEffect(Players players, Squares squares) {
+        Player player;
 
+        //logic for teleporting other player
+        if(players.getCurrentPlayer().getPlayerId()==1){
+            player = players.get(1);
+        } else {
+            player = players.get(0);
+        }
         // Generating a random destination square index within the remaining squares
         int destination = ThreadLocalRandom.current().nextInt(player.getPlayerPosition(), squares.size());
 
-        // Checking if the destination square is unoccupied
-        if(squares.get(destination).getPlayer() == null){
+        // Checking if the destination square is unoccupied and destination has no obstacles
+        if(squares.get(destination).getPlayer() == null && squares.get(destination).getObstacleId() == 0){
+            squares.get(player.getPlayerPosition()).removePlayer();
+
             squares.get(destination).setPlayer(player);
             player.setPlayerPosition(destination);
         }

@@ -6,6 +6,8 @@ package com.java.simonsobstaclecourse.model.player;
  */
 public class Player {
 
+    int score;
+
     /** The name of the player. */
     public String name;
 
@@ -16,7 +18,7 @@ public class Player {
     int playerPosition;
 
     /** The number of required moves for the player. */
-    int requiredMove = 0;
+    int requiredMove;
 
     /** Flag indicating whether the player should skip their turn. */
     boolean skipTurn = false;
@@ -30,7 +32,15 @@ public class Player {
     public Player(int playerId, String name){
         this.playerId = playerId;
         this.name = name;
-        this.playerPosition = 0;
+    }
+
+    public Player(String name, int score){
+        this.name = name;
+        this.score = score;
+    }
+
+    public String getName() {
+        return name;
     }
 
     /**
@@ -67,6 +77,15 @@ public class Player {
      */
     public void setRequiredMove(int requiredMove) {
         this.requiredMove = requiredMove;
+    }
+  
+    public int getScore() {
+        return score;
+    }
+
+  
+    public void increaseScore(int score) {
+        this.score += score;
     }
 
     /**
