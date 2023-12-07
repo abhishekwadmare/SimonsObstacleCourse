@@ -1,20 +1,20 @@
 package com.java.simonsobstaclecourse.model.board;
-import com.java.simonsobstaclecourse.model.player.Player;
 import com.java.simonsobstaclecourse.model.player.Players;
 
 public class Board {
     private Squares squares;
+    private int difficulty = 1;
     private Players players;
     private Dice dice;
 
     private ScoreBoard scoreBoard;
     private boolean gameOver;
 
-    public Board(Dice dice, Players players){
+    public Board(Dice dice, Players players, int difficulty, int boardSize){
         this.dice = dice;
         this.players = players;
         gameOver = false;
-        squares = new Squares(25);
+        squares = new Squares(boardSize, difficulty);
         scoreBoard = new ScoreBoard();
     }
 
@@ -41,6 +41,14 @@ public class Board {
     public void setGameOver(boolean gameOver) {
         this.gameOver = gameOver;
     }
+    public int getDifficulty() {
+        return difficulty;
+    }
+
+    public void setDifficulty(int difficulty) {
+        this.difficulty = difficulty;
+    }
+
 
     public void move(){
         int currentPlayerPosition = players.getCurrentPlayer().getPlayerPosition();

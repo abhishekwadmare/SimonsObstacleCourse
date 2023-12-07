@@ -59,7 +59,7 @@ public class GameView {
                     label.setStyle("-fx-border-color: brown transparent brown transparent ; -fx-border-width: 6px; -fx-background-color: " + colour +";"  + whiteText);
                 }
 
-                label.setMinSize(100, 75);
+                label.setMinSize(100, 60);
                 label.setAlignment(Pos.CENTER);
                 gameBoard.add(label, i, top);
             }
@@ -82,7 +82,7 @@ public class GameView {
                 } else {
                     label.setStyle("-fx-border-color: transparent brown transparent brown; -fx-border-width: 6px; -fx-background-color: " + colour +";"  + whiteText);
                 }
-                label.setMinSize(100, 75);
+                label.setMinSize(100, 60);
                 label.setAlignment(Pos.CENTER);
                 gameBoard.add(label, right, i);
             }
@@ -107,7 +107,7 @@ public class GameView {
                     label.setStyle("-fx-border-color: brown transparent brown transparent; -fx-border-width: 6px; -fx-background-color: " + colour +";"  + whiteText);
                 }
 
-                label.setMinSize(100, 75);
+                label.setMinSize(100, 60);
                 label.setAlignment(Pos.CENTER);
                 gameBoard.add(label, i, bottom);
             }
@@ -132,7 +132,7 @@ public class GameView {
                     label.setStyle("-fx-border-color: transparent brown transparent brown; -fx-border-width: 6px; -fx-background-color: " + colour +";"  + whiteText);
                 }
 
-                label.setMinSize(100, 75);
+                label.setMinSize(100, 60);
                 label.setAlignment(Pos.CENTER);
                 gameBoard.add(label, left, i);
             }
