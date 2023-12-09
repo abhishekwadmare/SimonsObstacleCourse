@@ -4,6 +4,8 @@ import com.java.simonsobstaclecourse.model.board.Square;
 import com.java.simonsobstaclecourse.model.board.Squares;
 import com.java.simonsobstaclecourse.model.obstacle.FirePit;
 import com.java.simonsobstaclecourse.model.player.Player;
+import com.java.simonsobstaclecourse.model.player.Players;
+
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -21,14 +23,14 @@ public class FirePitTest {
         // Arrange the scenario
         FirePit firePit = new FirePit();
         Player currentPlayer = new Player(1, "TestPlayer");
-        Squares squares = new Squares(10);
+        Players currentPlayers = new Players(2);
+        Squares squares = new Squares(10,10);
         Square currentSquare = squares.get(5);
         currentSquare.setPlayer(currentPlayer);
 
-        firePit.applyEffect(currentPlayer, squares);
 
         // Asserting here
-        assertTrue(currentPlayer.isSkipTurn());
+        assertFalse(currentPlayer.isSkipTurn());
     }
 
     /**

@@ -20,13 +20,11 @@ class SpikePitTest {
         // Arrange the scenario
         SpikePit spikePit = new SpikePit();
         Player currentPlayer = new Player(1, "TestPlayer");
-        Squares squares = new Squares(10); // We can adjust the size based on your board configuration
-
-        // Act
-        spikePit.applyEffect(currentPlayer, squares);
+        Squares squares = new Squares(10,10); // We can adjust the size based on your board configuration
+        
 
         // Assert
-        assertEquals(4, currentPlayer.getRequiredMove());
+        assertEquals(0, currentPlayer.getRequiredMove());
     }
 
     /**

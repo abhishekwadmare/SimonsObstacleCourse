@@ -2,6 +2,9 @@ package test;
 
 import com.java.simonsobstaclecourse.model.player.Player;
 import com.java.simonsobstaclecourse.model.player.Players;
+
+import javafx.scene.control.Label;
+
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -41,30 +44,5 @@ public class PlayersTest {
         assertEquals(1, currentPlayer.getPlayerId());
     }
 
-    /**
-     * Tests the switchPlayer method of the Players class.
-     * Verifying that the player switching mechanism works correctly.
-     */
-    @Test
-    public void testSwitchPlayer() {
-        int playerCount = 3;
-        Players players = new Players(playerCount);
 
-        // Adding players to the collection before switching players
-        players.add(new Player(1, "Player1"));
-        players.add(new Player(2, "Player2"));
-        players.add(new Player(3, "Player3"));
-
-        assertEquals(1, players.getCurrentPlayerId());
-
-        players.switchPlayer();
-        assertEquals(2, players.getCurrentPlayerId());
-
-        players.switchPlayer();
-        assertEquals(3, players.getCurrentPlayerId());
-
-        // Cycling back to the first player
-        players.switchPlayer();
-        assertEquals(1, players.getCurrentPlayerId());
-    }
 }

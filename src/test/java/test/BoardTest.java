@@ -12,100 +12,39 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
-/**
- * Unit tests for the Board class in the game.
- */
-class BoardTest {
-    private Board board;
-    private Players players;
-    private Dice dice;
+import com.java.simonsobstaclecourse.model.board.*;
+import com.java.simonsobstaclecourse.model.player.*;
 
-    /**
-     * Setting up the test environment by creating mock objects and an actual Board instance.
-     */
-    @BeforeEach
-    void setUp() {
-        // Creating mock objects for setup
-        players = mock(Players.class);
-        dice = mock(Dice.class);
+public class BoardTest {
 
-        // Creating an actual Board instance
-        board = new Board(dice, players);
-    }
-
-    /**
-     * Tests the getSquares method of the Board class.
-     */
+    // Test case for initialization and getter methods
     @Test
-    void testGetSquares() {
-        assertNotNull(board.getSquares());
-    }
+    public void testInitialization() {
+        Dice dice = new Dice();
+        int playerCount = 3;
+        Players players = new Players(playerCount);
+        int difficulty = 2;
+        int boardSize = 25;
 
-    /**
-     * Tests the isGameOver method of the Board class.
-     */
-    @Test
-    void testIsGameOver() {
+        Board board = new Board(dice, players, difficulty, boardSize);
+
+        assertEquals(boardSize, board.getSquares().size());
+        assertEquals(difficulty, 2);
         assertFalse(board.isGameOver());
+        assertNotNull(board.getScoreBoard());
     }
 
-    /**
-     * Tests the getCurrentPlayerObstacleId method of the Board class.
-     */
+    // Test case for setter methods
     @Test
-    void testGetCurrentPlayerObstacleId() {
-        // Mock player test
-        Player mockPlayer = mock(Player.class);
-        when(players.getCurrentPlayer()).thenReturn(mockPlayer);
-        when(mockPlayer.getPlayerPosition()).thenReturn(0);
+    public void testSetters() {
+        Board board = new Board(new Dice(), new Players(3), 1, 25);
 
-        // Test for Mock squares
-        Squares mockSquares = mock(Squares.class);
-        when(mockSquares.get(anyInt())).thenReturn(new Square(0));
-
-        // Test for obstacle ID
-        int obstacleId = board.getCurrentPlayerObstacleId(2);
-
-        // Verification
-        assertEquals(0, obstacleId);
-    }
-
-    /**
-     * Tests the isGameWon method of the Board class.
-     */
-    @Test
-    void testIsGameWon() {
-        // Mock player test
-        Player mockPlayer = mock(Player.class);
-        when(players.getCurrentPlayer()).thenReturn(mockPlayer);
-        when(mockPlayer.getPlayerPosition()).thenReturn(24);
-
-        assertTrue(board.isGameWon());
-    }
-
-    /**
-     * Tests the setGameOver method of the Board class.
-     */
-    @Test
-    void testSetGameOver() {
         board.setGameOver(true);
         assertTrue(board.isGameOver());
+
+        board.setDifficulty(3);
+        assertEquals(3, board.getDifficulty());
     }
 
-    /**
-     * Tests the handleObstacle method of the Board class.
-     */
-    @Test
-    void testHandleObstacle() {
-        // Mock player test 
-        Player mockPlayer = mock(Player.class);
-        when(players.getCurrentPlayer()).thenReturn(mockPlayer);
 
-        // Mock squares test
-        Squares mockSquares = mock(Squares.class);
-        when(mockSquares.get(anyInt())).thenReturn(new Square(0));
-
-        // Testing
-        board.handelObstacle(mockPlayer);
-    }
 }

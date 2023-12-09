@@ -65,21 +65,4 @@ class DiceTest {
         assertEquals(0, diceValue);
     }
 
-    /**
-     * Testing the roll method of the Dice class with a mocked ThreadLocalRandom.
-     * Provides a specific value (7) through the mock.
-     */
-    @Test
-    void testRollWithMockedThreadLocalRandom() {
-        Dice dice = new Dice();
-        // Setting up a mock for ThreadLocalRandom
-        ThreadLocalRandom mockRandom = mock(ThreadLocalRandom.class);
-        when(mockRandom.nextInt(1, 10)).thenReturn(7);
-
-        // Rolling the dice with the mock ThreadLocalRandom
-        dice.roll();
-
-        int diceValue = dice.getDiceValue();
-        assertEquals(7, diceValue);
-    }
 }

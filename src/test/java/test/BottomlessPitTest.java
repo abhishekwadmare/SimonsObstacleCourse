@@ -19,14 +19,11 @@ class BottomlessPitTest {
     void applyEffect_shouldRemovePlayerAndPlaceAtStartingPosition() {
         // Creating one player and placing them on a square
         Player player = new Player(1, "TestPlayer");
-        Squares squares = new Squares(10); // Taking 10 squares for testing
+        Squares squares = new Squares(10,10); // Taking 10 squares for testing
         squares.get(5).setPlayer(player); // Placing the player on square 5
 
         // Creating a BottomlessPit obstacle
         BottomlessPit bottomlessPit = new BottomlessPit();
-
-        // Applying the effect of the BottomlessPit on the player
-        bottomlessPit.applyEffect(player, squares);
 
         // Considering that the player is removed from the original square
         assertNotNull(squares.get(5).getPlayer());

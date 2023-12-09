@@ -17,7 +17,7 @@ public class SquaresTest {
     void testAddSquares() {
         // Creating an instance of the Squares class with a specified size
         int size = 25; // You can adjust the size based on your actual requirements
-        Squares squares = new Squares(size);
+        Squares squares = new Squares(size,25);
 
         // Verifying that the number of squares matches the specified size
         assertEquals(size, squares.size());
