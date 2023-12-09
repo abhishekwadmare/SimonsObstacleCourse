@@ -7,6 +7,10 @@ import com.java.simonsobstaclecourse.model.player.Players;
 /**
  * An interface representing obstacles in the game.
  * Obstacles define effects to be applied on players and provide unique identifiers.
+ * 
+ * @author Abhishek Wadmare
+ * @author Lakshay Narula
+ *
  */
 public interface Obstacle {
     /**

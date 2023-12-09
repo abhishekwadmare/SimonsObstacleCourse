@@ -7,6 +7,10 @@ import java.util.ArrayList;
 /**
  * Representing a collection of players in the game.
  * Extends the ArrayList class to provide additional functionality for managing players.
+ * 
+ * @author Abhishek Wadmare
+ * @author Lakshay Narula
+ *
  */
 public class Players extends ArrayList<Player> {
 

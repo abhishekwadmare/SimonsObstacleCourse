@@ -5,6 +5,9 @@ import com.java.simonsobstaclecourse.model.player.Players;
 /**
  * Represents the game board for Simon's Obstacle Course.
  * This manages player movements, obstacles, and game state.
+ * 
+ * @author Abhishek Wadmare
+ * @author Lakshay Narula
  */
 public class Board {
 

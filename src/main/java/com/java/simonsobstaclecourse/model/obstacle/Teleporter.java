@@ -9,6 +9,10 @@ import java.util.concurrent.ThreadLocalRandom;
 /**
  * Representing the Teleporter obstacle in the game.
  * Implements the Obstacle interface to define its effects and properties.
+ * 
+ * @author Abhishek Wadmare
+ * @author Lakshay Narula
+ *
  */
 public class Teleporter implements Obstacle {
 

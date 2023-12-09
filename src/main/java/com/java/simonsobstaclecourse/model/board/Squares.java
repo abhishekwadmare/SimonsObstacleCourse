@@ -5,6 +5,10 @@ import java.util.ArrayList;
 /**
  * Representing a collection of squares on the game board in project.
  * Extends the ArrayList class to provide additional functionality for managing squares.
+ * 
+ * @author Abhishek Wadmare
+ * @author Lakshay Narula
+ *
  */
 public class Squares extends ArrayList<Square> {
 

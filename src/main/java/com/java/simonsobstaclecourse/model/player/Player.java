@@ -3,6 +3,10 @@ package com.java.simonsobstaclecourse.model.player;
 /**
  * Represents a player in the game.
  * Each player has a name, unique identifier, current position on the game board, required move value, and skip turn status.
+ * 
+ * @author Abhishek Wadmare
+ * @author Lakshay Narula
+ *
  */
 public class Player {
 

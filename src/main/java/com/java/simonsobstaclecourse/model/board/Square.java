@@ -6,6 +6,9 @@ import com.java.simonsobstaclecourse.model.player.Player;
 /**
  * Representing a square on the game board in the game.
  * Each square can contain a player, an obstacle, or both.
+ * 
+ * @author Abhishek Wadmare
+ * @author Lakshay Narula
  */
 public class Square {
 

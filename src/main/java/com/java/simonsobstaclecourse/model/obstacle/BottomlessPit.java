@@ -7,6 +7,10 @@ import com.java.simonsobstaclecourse.model.player.Players;
 /**
  * Represents a Bottomless Pit obstacle in the game.
  * Implements the Obstacle interface to define its effects and properties.
+ * 
+ * @author Abhishek Wadmare
+ * @author Lakshay Narula
+ *
  */
 public class BottomlessPit implements Obstacle{
 

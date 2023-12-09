@@ -6,6 +6,9 @@ import java.util.concurrent.ThreadLocalRandom;
 /**
  * Represents a six-sided dice used in the game.
  * Allows rolling the dice and retrieving the rolled value.
+ * 
+ * @author Abhishek Wadmare
+ * @author Lakshay Narula
  */
 public class Dice {
 
