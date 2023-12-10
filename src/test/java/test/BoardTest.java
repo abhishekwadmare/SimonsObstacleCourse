@@ -41,10 +41,8 @@ public class BoardTest {
 
         board.setGameOver(true);
         assertTrue(board.isGameOver());
-
         board.setDifficulty(3);
         assertEquals(3, board.getDifficulty());
     }
-
 
 }

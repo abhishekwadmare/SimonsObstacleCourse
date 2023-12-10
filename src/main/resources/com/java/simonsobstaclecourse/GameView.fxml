@@ -31,7 +31,7 @@
                <MenuButton fx:id="numberOfPlayers" layoutX="365.0" layoutY="48.0" mnemonicParsing="false" text="Number of Players">
 
          </MenuButton>
-               <MenuButton fx:id="dificultyLevel" layoutX="554.0" layoutY="61.0" mnemonicParsing="false" text="Difficulty level">
+               <MenuButton fx:id="difficultyLevel" layoutX="554.0" layoutY="61.0" mnemonicParsing="false" text="Difficulty level">
 
          </MenuButton>
                <Button fx:id="start" layoutX="322.0" layoutY="98.0" mnemonicParsing="false" onMouseClicked="#startGame" prefHeight="40.0" prefWidth="215.0" text="Start">
@@ -53,7 +53,7 @@
    </Label>
    <Pane>
       <children>
-         <AnchorPane fx:id="playerNamesbar">
+         <AnchorPane fx:id="playerNamesBar">
             <children>
                <TextField fx:id="p1Name" layoutX="552.0" promptText="Player 1 name" />
                <TextField fx:id="p2Name" layoutX="396.0" layoutY="-1.0" prefHeight="26.0" prefWidth="134.0" promptText="Player 2 name" />

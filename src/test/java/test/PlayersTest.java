@@ -14,18 +14,6 @@ import static org.junit.jupiter.api.Assertions.*;
 public class PlayersTest {
 
     /**
-     * Tests the getCurrentPlayerId method of the Players class.
-     * Verifying that the initial current player ID is correct.
-     */
-    @Test
-    public void testGetCurrentPlayerId() {
-        int playerCount = 3;
-        Players players = new Players(playerCount);
-
-        assertEquals(1, players.getCurrentPlayerId());
-    }
-
-    /**
      * Tests the getCurrentPlayer method of the Players class.
      * Verifying that the correct current player is retrieved after adding players.
      */

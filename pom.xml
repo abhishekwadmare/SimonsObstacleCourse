@@ -41,7 +41,7 @@
         <artifactId>testfx-junit</artifactId>
         <version>4.0.17</version> <!-- Use the latest version available -->
         <scope>test</scope>
-    </dependency>
+    </dependency>
 <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>

@@ -22,9 +22,6 @@ class BottomlessPitTest {
         Squares squares = new Squares(10,10); // Taking 10 squares for testing
         squares.get(5).setPlayer(player); // Placing the player on square 5
 
-        // Creating a BottomlessPit obstacle
-        BottomlessPit bottomlessPit = new BottomlessPit();
-
         // Considering that the player is removed from the original square
         assertNotNull(squares.get(5).getPlayer());
 
@@ -43,7 +40,6 @@ class BottomlessPitTest {
         BottomlessPit bottomlessPit = new BottomlessPit();
 
         int obstacleId = bottomlessPit.getObstacleId();
-
         // Assert the situation
         assertEquals(1, obstacleId); // Bottomless Pit obstacle has one obstacleId 1
     }

@@ -21,8 +21,8 @@ public class FirePit implements Obstacle {
      * Applying the effect of the Fire Pit obstacle on the current player.
      * Sets the skip turn flag for the current player.
      *
-     * @param currentPlayer The player encountering the obstacle.
-     * @param squares        The collection of squares on the game board.
+     * @param players The player encountering the obstacle.
+     * @param squares The collection of squares on the game board.
      */
     @Override
     public void applyEffect(Players players, Squares squares) {

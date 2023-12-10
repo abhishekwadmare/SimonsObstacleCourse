@@ -23,11 +23,10 @@ public class FirePitTest {
         // Arrange the scenario
         FirePit firePit = new FirePit();
         Player currentPlayer = new Player(1, "TestPlayer");
-        Players currentPlayers = new Players(2);
-        Squares squares = new Squares(10,10);
-        Square currentSquare = squares.get(5);
+        Players currentPlayers = new Players(1);
+        Squares squares = new Squares(25,2);
+        Square currentSquare = squares.get(10);
         currentSquare.setPlayer(currentPlayer);
-
 
         // Asserting here
         assertFalse(currentPlayer.isSkipTurn());
