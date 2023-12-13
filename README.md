@@ -22,4 +22,3 @@ Make sure you have the following installed on your machine:
 4. The game will start in a new Window, and you will see the instructions for Simon's Game.
 
 6. Have fun playing Simon's Game!
-![Uploading GameScreenshot.png…]()
